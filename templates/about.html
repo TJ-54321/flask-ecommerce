@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>About Us – Genuine Ayurvedic &amp; Unani Development Ltd</title>
+<link href="images/logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #2e7d32;
+      --accent: #b2ff59;
+      --bg-dark: #121212;
+      --text-light: #fff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Open Sans',sans-serif; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    /* NAVBAR */
+    nav {
+      position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem; background:rgba(18,18,18,0.5); backdrop-filter:blur(8px); z-index:100;
+    }
+    .nav-brand { display:flex; align-items:center; font-family:'Lora',serif; font-size:1.6rem; color:var(--accent); }
+    .nav-brand img { height:40px; margin-right:0.5rem; }
+    .nav-menu { display:flex; gap:1.5rem; }
+    .nav-menu a { color:var(--text-light); font-weight:600; transition:color .3s; }
+    .nav-menu a:hover { color:var(--accent); }
+    .nav-menu a.active { color:var(--accent); }
+
+    /* HERO */
+    .hero {
+      height:80vh; background:url('images/hero-about.jpg') center/cover no-repeat fixed;
+      position:relative; display:flex; align-items:center; justify-content:center;
+    }
+    .hero::after {
+      content:''; position:absolute; inset:0; background:rgba(0,0,0,0.4);
+    }
+    .hero-content {
+      position:relative; text-align:center; color:var(--text-light);
+      animation:fadeInDown 1s ease-out;
+    }
+    @keyframes fadeInDown {
+      from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);}
+    }
+    .hero-content h1 { font-family:'Lora',serif; font-size:3rem; margin-bottom:1rem; }
+    .hero-content p { font-size:1.1rem; max-width:600px; margin:0 auto; }
+
+    /* SECTION */
+    .section {
+      padding:4rem 2rem; background:#f9f9f9; margin-top:20px;
+    }
+    .section h2 {
+      font-family:'Lora',serif; font-size:2.4rem; text-align:center;
+      color:var(--primary); position:relative; display:inline-block; margin-bottom:1rem;
+    }
+    .section h2::after {
+      content:''; display:block; width:60px; height:4px;
+      background:var(--accent); margin:0.5rem auto;
+    }
+    .section p, .section ul {
+      max-width:800px; margin:1rem auto; color:#555;
+    }
+    .section ul { list-style:disc inside; }
+
+    /* FOOTER */
+    footer {
+      background:var(--bg-dark); color:var(--text-light); text-align:center;
+      padding:2rem 1rem; margin-top:2rem;
+    }
+  </style>
+</head>
+<body>
+<nav>
+<div class="nav-brand">
+<img alt="Logo" src="{{ url_for('static', filename='images/logo.png') }}"/>
+      Genuine Ayurvedic &amp; Unani Development Ltd
+    </div>
+<div class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a class="active" href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="team.html">Team</a>
+<a href="login.html">Login</a>
+</div>
+</nav>
+<div class="hero-content">
+<h1>Our Journey in Natural Healing</h1>
+<p>At Genuine Ayurvedic &amp; Unani Development Ltd, we’ve been blending ancient herbal wisdom with modern purity standards since 1995. Our mission is to restore harmony and well-being, one formulation at a time.</p>
+</div>
+
+<section class="section">
+<h2>Our Mission</h2>
+<p>To create authentic, sustainably sourced Ayurvedic and Unani remedies—crafted with care, backed by science, and steeped in tradition.</p>
+<h2>Our Values</h2>
+<ul>
+<li><strong>Authenticity &amp; Transparency:</strong> Full ingredient disclosure and batch testing.</li>
+<li><strong>Sustainability &amp; Fair Trade:</strong> Ethical harvesting and support of local farmers.</li>
+<li><strong>Quality &amp; Safety:</strong> GMP-certified facilities and rigorous QC.</li>
+</ul>
+</section>
+<footer>
+    © 2025 Genuine Ayurvedic &amp; Unani Development Ltd. All rights reserved.
+  </footer>
+</body>
+</html>

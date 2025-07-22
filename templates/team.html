@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team – Genuine Ayurvedic &amp; Unani Development Ltd</title>
+<link href="images/logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #2e7d32;
+      --accent: #b2ff59;
+      --bg-light: #eaf5ef;
+      --text-dark: #2e2e2e;
+    }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    nav {
+      background: var(--bg-light);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .nav-brand img { height: 40px; margin-right: 0.5rem; }
+    .nav-menu { display: flex; gap: 1rem; }
+    .nav-menu a {
+      color: var(--text-dark);
+      font-weight: 600;
+      padding: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover,
+    .nav-menu a.active { color: var(--accent); }
+
+    /* Hero Banner */
+    .hero {
+      height: 40vh;
+      background: url('images/hero-team.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+    }
+    .hero-content {
+      position: relative;
+      color: #fff;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero-content h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.8rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 4rem 2rem;
+      background: var(--bg-light);
+      flex: 1;
+    }
+    .team-section h2 {
+      font-family: 'Lora', serif;
+      font-size: 2.4rem;
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      position: center;
+      display: inline-block;
+    }
+    .team-section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .member {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .member:hover { transform: translateY(-8px); }
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .member h3 {
+      font-family: 'Lora', serif;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .member p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    /* Positioning 7 members */
+    .team-grid {
+      grid-template-areas:
+        ". chairman ."
+        "m1 m2 m3"
+        "m4 m5 m6";
+    }
+    .member.chairman { grid-area: chairman; }
+    .member.row2-item1 { grid-area: m1; }
+    .member.row2-item2 { grid-area: m2; }
+    .member.row2-item3 { grid-area: m3; }
+    .member.row3-item1 { grid-area: m4; }
+    .member.row3-item2 { grid-area: m5; }
+    .member.row3-item3 { grid-area: m6; }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<nav>
+<div class="nav-brand">
+<img alt="Logo" src="{{ url_for('static', filename='images/logo.png') }}"/>
+      Genuine Ayurvedic &amp; Unani Ltd
+    </div>
+<div class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a class="active" href="team.html">Team</a>
+<a href="login.html">Login</a>
+</div>
+</nav>
+<section class="team-section">
+<h2>Our Leadership &amp; Experts</h2>
+<div class="team-grid">
+<div class="member chairman">
+<img alt="Chairman" src="{{ url_for('static', filename='images/team1.jpg') }}"/>
+<h3>Dr. Apel Mahmud</h3>
+<p>Founder &amp; Managing Director</p>
+</div>
+<div class="member row2-item1">
+<img alt="Chief Formulator" src="{{ url_for('static', filename='images/team2.jpg') }}"/>
+<h3>Mr. Kamal Ahmed</h3>
+<p>Chief Ayurvedic Formulator</p>
+</div>
+<div class="member row2-item2">
+<img alt="Herbologist" src="{{ url_for('static', filename='images/team3.jpg') }}"/>
+<h3>Dr. Rahim Uddin</h3>
+<p>Unani Herbologist</p>
+</div>
+<div class="member row2-item3">
+<img alt="QA Lead" src="{{ url_for('static', filename='images/team4.jpg') }}"/>
+<h3>Ms. Fatima Zaman</h3>
+<p>Quality Assurance Lead</p>
+</div>
+<div class="member row3-item1">
+<img alt="Research Scientist" src="{{ url_for('static', filename='images/team5.jpg') }}"/>
+<h3>Ms. Nadia Islam</h3>
+<p>Research Scientist</p>
+</div>
+<div class="member row3-item2">
+<img alt="Production Manager" src="{{ url_for('static', filename='images/team6.jpg') }}"/>
+<h3>Mr. Hasan Mahmud</h3>
+<p>Production Manager</p>
+</div>
+<div class="member row3-item3">
+<img alt="Marketing Head" src="{{ url_for('static', filename='images/team7.jpg') }}"/>
+<h3>Mr. Jalal Uddin</h3>
+<p>Marketing Head</p>
+</div>
+</div>
+</section>
+<footer>
+    © 2025 Genuine Ayurvedic &amp; Unani Development Ltd. All rights reserved.
+  </footer>
+</body>
+</html>

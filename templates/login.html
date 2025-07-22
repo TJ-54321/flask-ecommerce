@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login – Genuine Ayurvedic &amp; Unani Development Ltd</title>
+<link href="images/logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #2e7d32;
+      --accent: #b2ff59;
+      --bg-light: #e0f2e9;
+      --text-dark: #2e2e2e;
+      --card-bg: rgba(255,255,255,0.85);
+    }
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    /* Header (Nav) */
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+    .nav-brand img {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 1rem;
+    }
+    .nav-menu a {
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--accent);
+    }
+    /* Login Card */
+    .login-card {
+      background: var(--card-bg);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 380px;
+      z-index: 5;
+      text-align: center;
+    }
+    .login-card h2 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      background: transparent;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .input-group label {
+      position: absolute;
+      top: 50%; left: 1rem;
+      transform: translateY(-50%);
+      background: var(--card-bg);
+      padding: 0 0.25rem;
+      color: #666;
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+    .input-group input:focus {
+      border-color: var(--accent);
+    }
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: -0.6rem;
+      left: 0.9rem;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+    }
+    .options a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .options a:hover {
+      color: var(--accent);
+    }
+    .login-card button {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .login-card button:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      text-align: center;
+      color: var(--text-dark);
+      font-size: 0.85rem;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+<nav>
+<div class="nav-brand">
+<img alt="Logo" src="{{ url_for('static', filename='images/logo.png') }}"/>
+      Genuine Ayurvedic &amp; Unani Development Ltd
+    </div>
+<div class="nav-menu">
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="team.html">Team</a>
+<a class="active" href="login.html">Login</a>
+</div>
+</nav>
+<div class="login-card">
+<h2>Member Login</h2>
+<form>
+<div class="input-group">
+<input id="email" placeholder=" " required="" type="email"/>
+<label for="email">Email Address</label>
+</div>
+<div class="input-group">
+<input id="password" placeholder=" " required="" type="password"/>
+<label for="password">Password</label>
+</div>
+<div class="options">
+<label><input type="checkbox"/> Remember me</label>
+<a href="#">Forgot Password?</a>
+</div>
+<button type="submit">Login</button>
+</form>
+</div>
+<footer>© 2025 Genuine Ayurvedic &amp; Unani Development Ltd.</footer>
+</body>
+</html>

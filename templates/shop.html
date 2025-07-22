@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Shop – Genuine Ayurvedic &amp; Unani Development Ltd</title>
+<link href="images/logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #2e7d32;
+      --accent: #b2ff59;
+      --bg-light: #fafdf9;
+      --text-dark: #2e2e2e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { font-family: 'Open Sans', sans-serif; background: var(--bg-light); color: var(--text-dark); }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(18,18,18,0.8);
+      backdrop-filter: blur(8px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    .nav-brand { display: flex; align-items: center; font-family: 'Lora', serif; font-size: 1.6rem; color: var(--accent); }
+    .nav-brand img { height: 40px; margin-right: 0.5rem; }
+    .nav-menu { display: flex; gap: 1.5rem; }
+    .nav-menu a { color: #fff; font-weight: 600; transition: color 0.3s; }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--accent); }
+
+    /* Search & Sort */
+    .search-sort-container {
+      display: flex; justify-content: center; gap: 1rem;
+      margin: 7rem auto 2rem;
+      flex-wrap: wrap;
+    }
+    .search-sort-container input,
+    .search-sort-container select {
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      min-width: 220px;
+    }
+    .search-sort-container input:focus,
+    .search-sort-container select:focus { border-color: var(--accent); }
+
+    /* Products Section */
+    .products-section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .products-section h2 {
+      font-family: 'Lora', serif;
+      font-size: 2.4rem;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .products-section h2::after {
+      content: '';
+      display: block;
+      width: 60px; height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .product-card:hover { transform: translateY(-8px); }
+    .product-card img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 1rem;
+      flex-grow: 1;
+    }
+    .product-info h3 {
+      font-family: 'Lora', serif;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .product-info p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .product-info .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .pagination button {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--primary);
+      background: #fff;
+      color: var(--primary);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .pagination button:hover,
+    .pagination button.active {
+      background: var(--accent);
+      color: #222;
+      border-color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      background: #121212;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+<nav>
+<div class="nav-brand">
+<img alt="Logo" src="{{ url_for('static', filename='images/logo.png') }}"/>
+      Genuine Ayurvedic &amp; Unani Development Ltd
+    </div>
+<div class="nav-menu">
+<a href="index.html">Home</a>
+<a class="active" href="shop.html">Shop</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="team.html">Team</a>
+<a href="login.html">Login</a>
+</div>
+</nav>
+<div class="search-sort-container">
+<input id="productSearch" placeholder="Search products..." type="text"/>
+<select id="sortPrice">
+<option value="">Sort by Price</option>
+<option value="asc">Low to High</option>
+<option value="desc">High to Low</option>
+</select>
+</div>
+<section class="products-section">
+<h2>All Products</h2>
+<div class="product-grid" id="productGrid">
+<!-- 12 product cards -->
+<div class="product-card"><img alt="Product 1" src="{{ url_for('static', filename='images/product1.jpg') }}"/><div class="product-info"><h3>Herbal Oil Blend</h3><p>Nourishing formula for hair &amp; skin.</p><div class="price">৳2000</div></div></div>
+<div class="product-card"><img alt="Product 2" src="{{ url_for('static', filename='images/product2.jpg') }}"/><div class="product-info"><h3>Immunity Tonic</h3><p>Revitalize your defenses naturally.</p><div class="price">৳1500</div></div></div>
+<div class="product-card"><img alt="Product 3" src="{{ url_for('static', filename='images/product3.jpg') }}"/><div class="product-info"><h3>Soothing Balm</h3><p>Calm &amp; restore with botanicals.</p><div class="price">৳1800</div></div></div>
+<div class="product-card"><img alt="Product 4" src="{{ url_for('static', filename='images/product4.jpg') }}"/><div class="product-info"><h3>Herbal Tea Mix</h3><p>Relaxing blend for stress relief.</p><div class="price">৳1200</div></div></div>
+<div class="product-card"><img alt="Product 5" src="{{ url_for('static', filename='images/product5.jpg') }}"/><div class="product-info"><h3>Digestive Syrup</h3><p>Supports healthy digestion.</p><div class="price">৳1400</div></div></div>
+<div class="product-card"><img alt="Product 6" src="{{ url_for('static', filename='images/product6.jpg') }}"/><div class="product-info"><h3>Joint Relief Oil</h3><p>Soothes sore muscles &amp; joints.</p><div class="price">৳2200</div></div></div>
+<div class="product-card"><img alt="Product 7" src="{{ url_for('static', filename='images/product7.jpg') }}"/><div class="product-info"><h3>Skin Brightening Cream</h3><p>Natural glow enhancer.</p><div class="price">৳2000</div></div></div>
+<div class="product-card"><img alt="Product 8" src="{{ url_for('static', filename='images/product8.jpg') }}"/><div class="product-info"><h3>Hair Growth Serum</h3><p>Strengthens hair follicles.</p><div class="price">৳2500</div></div></div>
+<div class="product-card"><img alt="Product 9" src="{{ url_for('static', filename='images/product9.jpg') }}"/><div class="product-info"><h3>Breathe Easy Balm</h3><p>Clears nasal congestion.</p><div class="price">৳1300</div></div></div>
+<div class="product-card"><img alt="Product 10" src="{{ url_for('static', filename='images/product10.jpg') }}"/><div class="product-info"><h3>Energy Booster Mix</h3><p>Natural vitality tonic.</p><div class="price">৳1600</div></div></div>
+<div class="product-card"><img alt="Product 11" src="{{ url_for('static', filename='images/product11.jpg') }}"/><div class="product-info"><h3>Cold &amp; Flu Syrup</h3><p>Relieves cold symptoms.</p><div class="price">৳1800</div></div></div>
+<div class="product-card"><img alt="Product 12" src="{{ url_for('static', filename='images/product12.jpg') }}"/><div class="product-info"><h3>Calming Essential Oil</h3><p>Promotes restful sleep.</p><div class="price">৳2300</div></div></div>
+</div>
+<div class="pagination">
+<button>« Prev</button>
+<button class="active">1</button>
+<button>2</button>
+<button>3</button>
+<button>Next »</button>
+</div>
+</section>
+<footer>
+    © 2025 Genuine Ayurvedic &amp; Unani Development Ltd. All rights reserved.
+  </footer>
+<script>
+    const grid = document.getElementById('productGrid');
+    const search = document.getElementById('productSearch');
+    const sortSelect = document.getElementById('sortPrice');
+
+    function filterAndSort() {
+      // filter
+      const term = search.value.toLowerCase();
+      Array.from(grid.children).forEach(card => {
+        const name = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = name.includes(term) ? 'flex' : 'none';
+      });
+      // sort
+      const order = sortSelect.value;
+      if (order) {
+        const cards = Array.from(grid.children).filter(c => c.style.display !== 'none');
+        cards.sort((a,b) => {
+          const pa = parseInt(a.querySelector('.price').innerText.replace(/[^\d]/g, '')); 
+          const pb = parseInt(b.querySelector('.price').innerText.replace(/[^\d]/g, '')); 
+          return order === 'asc' ? pa - pb : pb - pa;
+        });
+        cards.forEach(card => grid.appendChild(card));
+      }
+    }
+
+    search.addEventListener('input', filterAndSort);
+    sortSelect.addEventListener('change', filterAndSort);
+  </script>
+</body>
+</html>
